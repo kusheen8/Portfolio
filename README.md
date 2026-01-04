@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website with dark/light mode toggle, built with React and Vite.
 
+🌐 **Live Demo:** [https://portfolio-psi-ecru-67.vercel.app/](https://portfolio-psi-ecru-67.vercel.app/)
+
 ## Features
 
 - 🌓 Dark/Light Mode Toggle
@@ -57,15 +59,6 @@ npm run preview
 - Framer Motion
 - React Icons
 - CSS3 (Custom Properties for Theming)
-
-## Customization
-
-- Update personal information in component files
-- Modify colors in `src/index.css` CSS variables
-- Add/remove sections in `src/App.jsx`
-- Update navigation items in `src/components/Navigation.jsx`
-- Profile images: Place i1.jpeg and i2.jpeg in `src/components/images/`
-- Resume: Place Resume.pdf in `src/components/images/`
 
 ## Browser Support
 
