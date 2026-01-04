@@ -1,0 +1,75 @@
+# Portfolio Website
+
+A modern, responsive portfolio website with dark/light mode toggle, built with React and Vite.
+
+## Features
+
+- 🌓 Dark/Light Mode Toggle
+- 📱 Fully Responsive (Desktop & Mobile)
+- ✨ Smooth Animations with Framer Motion
+- 🎨 Modern UI/UX Design
+- 📧 Contact Form
+- 🚀 Fast Performance with Vite
+- 🖼️ Image Carousel in Hero Section
+
+## Sections
+
+- **Hero**: Introduction with profile images (i1 & i2) and typing animation
+- **Home**: Dev. Hacker. Designer. Me. card
+- **About**: Education and Experience timeline
+- **Skills**: Interactive skill cards grid (Java, React, NodeJS, Python, Full Dev, Git & GitHub, UI/UX, DBMS, SpringBoot)
+- **Projects**: Project showcase with technologies
+- **Certifications**: Professional certifications display
+- **Achievements**: Milestones and accomplishments
+- **Contact**: Get in touch form and quick links
+- **Footer**: Social links and copyright
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview
+
+```bash
+npm run preview
+```
+
+## Technologies Used
+
+- React 18
+- Vite
+- Framer Motion
+- React Icons
+- CSS3 (Custom Properties for Theming)
+
+## Customization
+
+- Update personal information in component files
+- Modify colors in `src/index.css` CSS variables
+- Add/remove sections in `src/App.jsx`
+- Update navigation items in `src/components/Navigation.jsx`
+- Profile images: Place i1.jpeg and i2.jpeg in `src/components/images/`
+- Resume: Place Resume.pdf in `src/components/images/`
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
