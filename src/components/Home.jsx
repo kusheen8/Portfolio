@@ -20,7 +20,7 @@ const Home = () => {
           >
             <HiStar />
           </motion.div>
-          <h1 className="home-title">Dev. Hacker. Designer. Me.</h1>
+          <h1 className="home-title">Dev. Coder. Designer. Me.</h1>
           <p className="home-description">
             I am a full-stack developer with a strong interest in building reliable and meaningful applications. 
             I enjoy working on user-friendly interfaces with React and developing dependable backend systems using 
