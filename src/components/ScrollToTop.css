@@ -2,32 +2,37 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 15px var(--shadow-lg);
+  font-size: 1.35rem;
+  box-shadow: 0 6px 24px var(--shadow-lg);
   z-index: 999;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.35s ease, transform 0.35s var(--ease-out);
+  backdrop-filter: blur(8px);
 }
 
 .scroll-to-top:hover {
-  box-shadow: 0 6px 25px var(--shadow-lg);
+  box-shadow: 0 10px 32px var(--shadow-lg);
+}
+
+.scroll-to-top:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
   .scroll-to-top {
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     bottom: 1.5rem;
     right: 1.5rem;
-    font-size: 1.3rem;
   }
 }

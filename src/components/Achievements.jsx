@@ -1,37 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  HiStar, 
+import {
+  HiCode,
   HiLightningBolt,
-  HiShieldCheck,
-  HiSpeakerphone,
-  HiUserGroup,
-  HiColorSwatch
+  HiCloud,
+  HiServer
 } from 'react-icons/hi';
-import { FaMedal, FaMapPin, FaTrophy, FaUsers } from 'react-icons/fa';
 import './Achievements.css';
 
 const Achievements = () => {
   const achievements = [
     {
-      icon: FaTrophy,
-      text: 'Runner Up in a Design Hackathon'
-    },
-    {
-      icon: FaUsers,
-      text: 'Design Core Member - NMIT Hacks Club'
-    },
-    {
-      icon: HiColorSwatch,
-      text: 'Art Club Member for AANADYANTA FEST'
-    },
-    {
-      icon: HiUserGroup,
-      text: 'Organised a 48 Hour College Hackathon'
+      icon: HiCode,
+      title: 'Full Stack Development',
+      description: 'End-to-end web applications with React, Node.js, Express, and MongoDB — from API design to polished UI.'
     },
     {
       icon: HiLightningBolt,
-      text: 'AR/VR Hackathon Participant - SRM Chennai'
+      title: 'AI Integrations',
+      description: 'Built production-ready AI features using LLM APIs, RAG pipelines, voice agents, and intelligent automation.'
+    },
+    {
+      icon: HiCloud,
+      title: 'Cloud Deployment',
+      description: 'Deployed and managed applications on AWS EC2 with Nginx, PM2, SSL certificates, and custom domain configuration.'
+    },
+    {
+      icon: HiServer,
+      title: 'Production Deployments',
+      description: 'Shipped multiple live products with CI/CD pipelines, performance optimization, and production-grade security.'
     }
   ];
 
@@ -39,53 +36,55 @@ const Achievements = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: 0.12 }
     }
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.4 }
+      transition: { duration: 0.45 }
     }
   };
 
   return (
-    <section id="achievements" className="achievements-section">
+    <section id="achievements" className="achievements-section" aria-label="Achievements">
       <div className="achievements-container">
-        <motion.h2
-          className="section-title"
+        <motion.div
+          className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Milestones & Moments
-        </motion.h2>
+          <h2 className="section-title">Achievements</h2>
+          <p className="section-subtitle">What I've shipped and mastered in production</p>
+        </motion.div>
 
         <motion.div
           className="achievements-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-60px' }}
         >
           {achievements.map((achievement, index) => {
             const Icon = achievement.icon;
             return (
               <motion.div
                 key={index}
-                className="achievement-card"
+                className="achievement-card glass-card"
                 variants={cardVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
+                whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="achievement-icon">
-                  <Icon />
+                  <Icon aria-hidden="true" />
                 </div>
-                <p className="achievement-text">{achievement.text}</p>
+                <h3 className="achievement-title">{achievement.title}</h3>
+                <p className="achievement-text">{achievement.description}</p>
               </motion.div>
             );
           })}

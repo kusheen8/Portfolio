@@ -1,31 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  HiCode, 
-  HiDesktopComputer,
-  HiDatabase
+import {
+  HiCode,
+  HiServer,
+  HiDatabase,
+  HiCloud,
+  HiLightningBolt,
+  HiCog
 } from 'react-icons/hi';
-import { 
-  FaReact, 
-  FaGithub,
-  FaNode,
-  FaJava,
-  FaPython
-} from 'react-icons/fa';
-import { SiSpringboot } from 'react-icons/si';
 import './Skills.css';
 
 const Skills = () => {
-  const skills = [
-    { name: 'Java', icon: FaJava },
-    { name: 'React', icon: FaReact },
-    { name: 'NodeJS', icon: FaNode },
-    { name: 'Python', icon: FaPython },
-    { name: 'Full Dev', icon: HiCode },
-    { name: 'Git & GitHub', icon: FaGithub },
-    { name: 'UI/UX', icon: HiDesktopComputer },
-    { name: 'DBMS', icon: HiDatabase },
-    { name: 'SpringBoot', icon: SiSpringboot },
+  const categories = [
+    {
+      title: 'Frontend',
+      icon: HiCode,
+      skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Vite']
+    },
+    {
+      title: 'Backend',
+      icon: HiServer,
+      skills: ['Node.js', 'Express.js', 'REST APIs', 'Authentication']
+    },
+    {
+      title: 'Database',
+      icon: HiDatabase,
+      skills: ['MongoDB']
+    },
+    {
+      title: 'Cloud & DevOps',
+      icon: HiCloud,
+      skills: ['AWS EC2', 'Nginx', 'PM2', 'GitHub Actions']
+    },
+    {
+      title: 'AI',
+      icon: HiLightningBolt,
+      skills: ['LLM APIs', 'AI Integrations', 'Prompt Engineering', 'Voice AI', 'Automation']
+    },
+    {
+      title: 'Tools',
+      icon: HiCog,
+      skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'Figma']
+    }
   ];
 
   const containerVariants = {
@@ -37,48 +53,56 @@ const Skills = () => {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.4 }
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45 }
     }
   };
 
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className="skills-section" aria-label="Skills">
       <div className="skills-container">
-        <motion.h2
-          className="section-title"
+        <motion.div
+          className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Skills
-        </motion.h2>
+          <h2 className="section-title">Skills</h2>
+          <p className="section-subtitle">Technologies and tools I work with</p>
+        </motion.div>
 
         <motion.div
-          className="skills-grid"
+          className="skills-categories"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-60px' }}
         >
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
+          {categories.map((category, index) => {
+            const Icon = category.icon;
             return (
               <motion.div
                 key={index}
-                className="skill-card"
+                className="skill-category glass-card"
                 variants={cardVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
+                whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="skill-icon">
-                  <Icon />
+                <div className="skill-category-header">
+                  <div className="skill-category-icon">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <h3 className="skill-category-title">{category.title}</h3>
                 </div>
-                <h3 className="skill-name">{skill.name}</h3>
+                <div className="skill-tags">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span key={skillIndex} className="skill-tag">{skill}</span>
+                  ))}
+                </div>
               </motion.div>
             );
           })}

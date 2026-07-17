@@ -85,7 +85,7 @@ const Certifications = () => {
             return (
               <motion.div
                 key={index}
-                className="certification-card"
+                className="certification-card glass-card premium-card"
                 variants={cardVariants}
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: 'spring', stiffness: 300 }}

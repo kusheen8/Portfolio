@@ -1,131 +1,177 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub } from 'react-icons/fa';
-import { HiLightningBolt } from 'react-icons/hi';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { HiCheckCircle } from 'react-icons/hi';
+import { SiOpenai, SiReact, SiNodedotjs } from 'react-icons/si';
 import './Projects.css';
 
-const Projects = () => {
-  const projects = [
-    {
-      title: 'BookIt',
-      description: 'Developed a MERN stack–based teacher-student appointment booking application to simplify scheduling and improve coordination.',
-      role: 'Full-stack developer, implemented MERN stack components',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'React'],
-      github: 'https://github.com/kusheen8/BookIt',
-      demo: 'https://bookit-frontend-jyz6.onrender.com'
-    },
-    {
-      title: 'WellNest',
-      description: 'Developed a MERN stack–based wellness tracker platform with full CRUD operations to manage user activities, health data, and progress tracking.',
-      role: 'Lead developer, implemented real-time status tracking',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'React'],
-      github: 'https://github.com/kusheen8/WellNest',
-      demo: ' https://wellnest-client.onrender.com'
-    },
-    {
-      title: 'AccessIt',
-      description: 'An AI-powered accessibility analyzer that scans web links to identify accessibility issues and provides AI-driven solutions to help debug and resolve errors efficiently.',
-      role: 'Full-stack developer',
-      technologies: ['JS', 'Node.js', 'Pa11y', 'HuggingFaceAPI'],
-      github: 'https://github.com/kusheen8/Accessit',
+const projects = [
+  {
+    title: 'DevAssist AI',
+    description:
+      'AI-powered developer assistant that helps developers understand codebases, generate documentation, debug applications, explain repositories, and improve developer productivity using modern LLMs.',
+    features: [
+      'RAG-based document Q&A with PDF uploads',
+      'Semantic search via embeddings and vector database',
+      'Context-aware answers powered by Llama 3.1',
+      'Hallucination guardrails and chat history',
+    ],
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'LLMs', 'AI', 'GitHub'],
+    github: 'https://github.com/kusheen8/DevAssist-AI',
+    demo: 'https://devassist-ai.streamlit.app/',
+    previewClass: 'preview-devassist',
+    previewIcon: SiOpenai,
+  },
+  {
+    title: 'AccessScan',
+    description:
+      'AI-powered web accessibility analyzer that performs real accessibility audits, detects WCAG issues, and generates intelligent recommendations to improve accessibility and usability.',
+    features: [
+      'AI accessibility analysis with actionable insights',
+      'Automated audits powered by Pa11y',
+      'WCAG compliance recommendations',
+      'Full-stack dashboard for scan results',
+    ],
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Pa11y', 'Accessibility', 'AI', 'AWS'],
+    github: 'https://github.com/kusheen8/AccessScan',
+    demo: 'http://13.202.183.229/',
+    previewClass: 'preview-accessscan',
+    previewIcon: SiReact,
+  },
+  {
+    title: 'ChatX 3',
+    description:
+      'Modern AI chat application with intelligent conversations, fast responses, authentication, responsive UI, and clean user experience.',
+    features: [
+      'Real-time AI-powered conversations',
+      'JWT authentication and secure sessions',
+      'Responsive, polished chat interface',
+      'Persistent message history',
+    ],
+    technologies: ['React', 'Node.js', 'Socket.io', 'JavaScript'],
+    github: 'https://github.com/kusheen8/ChatX',
+    demo: null,
+    previewClass: 'preview-chatx',
+    previewIcon: SiNodedotjs,
+  },
+];
 
-    },
-    {
-      title: 'ChatX',
-      description: 'A React Native real-time 1:1 chat application using the MERN stack and Socket.IO, featuring JWT authentication, online presence, typing indicators, and persistent message history.',
-      role: 'React Native Developer',
-      technologies: ['React', 'MongoDb', 'Socket.IO', 'JWT'],
-      github: 'https://github.com/kusheen8/ChatX',
-    }
-  ];
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
+const ProjectCard = ({ project }) => {
+  const PreviewIcon = project.previewIcon;
 
   return (
-    <section id="projects" className="projects-section">
-      <div className="projects-container">
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Projects
-        </motion.h2>
+    <motion.article
+      className="project-card glass-card"
+      variants={cardVariants}
+      whileHover={{ y: -12 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+    >
+      <div className="project-card-glow" aria-hidden="true" />
 
-        <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="project-card"
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <p className="project-role">{project.role}</p>
-              
-              <div className="project-technologies">
-                {project.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-
-              {(project.github || project.demo) && (
-                <div className="project-actions">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn github-btn"
-                    >
-                      <FaGithub />
-                      <span>View on GitHub</span>
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn demo-btn"
-                    >
-                      <HiLightningBolt />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className={`project-preview ${project.previewClass}`}>
+        <div className="project-preview-overlay" aria-hidden="true" />
+        <PreviewIcon className="project-preview-icon" aria-hidden="true" />
+        <span className="project-preview-label">{project.title}</span>
       </div>
-    </section>
+
+      <div className="project-body">
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+
+        <ul className="project-features">
+          {project.features.map((feature, i) => (
+            <li key={i}>
+              <HiCheckCircle aria-hidden="true" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="project-technologies" aria-label={`${project.title} tech stack`}>
+          {project.technologies.map((tech) => (
+            <span key={tech} className="tech-tag">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="project-actions">
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-btn demo-btn"
+              aria-label={`View ${project.title} Live Demo`}
+            >
+              <FaExternalLinkAlt aria-hidden="true" />
+              <span>View Live Demo</span>
+            </a>
+          )}
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`project-btn github-btn${!project.demo ? ' github-btn-full' : ''}`}
+              aria-label={`View ${project.title} Source Code`}
+            >
+              <FaGithub aria-hidden="true" />
+              <span>View Source Code</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
   );
 };
+
+const Projects = () => (
+  <section id="projects" className="projects-section" aria-label="Projects">
+    <div className="projects-container">
+      <motion.div
+        className="section-header"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="section-title">Projects</h2>
+        <p className="section-subtitle">
+          AI-powered tools and full-stack applications I've built
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="projects-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {projects.map((project) => (
+          <ProjectCard key={project.title} project={project} />
+        ))}
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default Projects;

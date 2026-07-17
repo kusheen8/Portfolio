@@ -1,8 +1,14 @@
 .app {
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
 }
 
 main {
   width: 100%;
+}
+
+main > section,
+main > .section-divider {
+  position: relative;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaHeart, FaCoffee } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
+import ResumeButton from './ResumeButton';
 import './Footer.css';
 
 const Footer = () => {
@@ -49,6 +50,7 @@ const Footer = () => {
             >
               <HiMail />
             </motion.a>
+            <ResumeButton variant="footer" mode="download" />
           </div>
 
           <div className="footer-text">
